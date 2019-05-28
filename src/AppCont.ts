@@ -3,7 +3,8 @@ import * as actions from "./AppActions";
 import { AppState } from "./AppState";
 
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from 'redux-thunk';
 
 export function mapAppStateToProps(state: AppState) { // untyped return
     return {
@@ -12,7 +13,7 @@ export function mapAppStateToProps(state: AppState) { // untyped return
     }
 }
 
-export function mapAppDispatchToProps(dispatch: Dispatch<actions.ShowSeconds>){ // untyped return
+export function mapAppDispatchToProps(dispatch: ThunkDispatch<{}, {}, AnyAction>){ // untyped return
     return {
         onShowSeconds: () => dispatch(actions.showSeconds())
     }

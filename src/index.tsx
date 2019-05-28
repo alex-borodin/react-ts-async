@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import { apply_showseconds } from "./AppReducer";
 import { AppState } from "./AppState";
@@ -13,7 +14,7 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore<AppState, any, any, any>(apply_showseconds, {
     seconds: 0
-});
+}, applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store}><AppCont /></Provider>,
